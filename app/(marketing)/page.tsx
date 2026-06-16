@@ -13,11 +13,11 @@ export default function HomePage() {
       <Hero />
       <Logos />
       <Features />
-      <AiShowcase />
-      <Collaboration />
+      {/* <AiShowcase /> */}
+      {/* <Collaboration /> */}
       <Testimonials />
-      <PricingPreview />
-      <CtaSection />
+      {/* <PricingPreview /> */}
+      {/* <CtaSection /> */}
     </>
   )
 }

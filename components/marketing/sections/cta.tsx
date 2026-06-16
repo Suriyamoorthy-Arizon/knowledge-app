@@ -34,7 +34,7 @@ export function CtaSection() {
               variant="outline"
               className="w-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground sm:w-auto"
             >
-              <Link href="/contact">Talk to sales</Link>
+              <Link href="/submit-issue">Talk to sales</Link>
             </Button>
           </div>
         </div>

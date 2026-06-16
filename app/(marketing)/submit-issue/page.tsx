@@ -18,8 +18,8 @@ export default function ContactPage() {
   return (
     <div className="py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+        
+          {/* <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">Contact</p>
             <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Let&apos;s talk about your team&apos;s knowledge
@@ -42,12 +42,12 @@ export default function ContactPage() {
                 </div>
               ))}
             </dl>
-          </div>
+          </div> */}
 
           <div className="rounded-2xl border border-border bg-card p-7 shadow-sm sm:p-8">
             <ContactForm />
           </div>
-        </div>
+        
       </div>
     </div>
   )

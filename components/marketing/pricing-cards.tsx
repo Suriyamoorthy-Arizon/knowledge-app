@@ -31,7 +31,7 @@ export function PricingCards() {
             className="mt-6"
             variant={plan.featured ? "default" : "outline"}
           >
-            <Link href={plan.name === "Enterprise" ? "/contact" : "/signup"}>{plan.cta}</Link>
+            <Link href={plan.name === "Enterprise" ? "/submit-issue" : "/signup"}>{plan.cta}</Link>
           </Button>
           <ul className="mt-7 flex flex-col gap-3">
             {plan.features.map((feature) => (

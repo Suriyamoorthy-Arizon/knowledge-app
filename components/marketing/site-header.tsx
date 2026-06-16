@@ -10,11 +10,11 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { href: "/#features", label: "Features" },
-  { href: "/#ai", label: "AI Assistant" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#features", label: "Knowledge Base" },
+  // { href: "/#ai", label: "AI Assistant" },
+  // { href: "/pricing", label: "Pricing" },
+  // { href: "/about", label: "About" },
+  { href: "/submit-issue", label: "Submit Issue" },
 ]
 
 export function SiteHeader() {
@@ -42,7 +42,7 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <ThemeToggle className="hidden sm:inline-flex" />
           <Button asChild variant="ghost" className="hidden sm:inline-flex">
             <Link href="/login">Sign in</Link>
@@ -59,10 +59,10 @@ export function SiteHeader() {
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </Button>
-        </div>
+        </div> */}
       </div>
 
-      {open && (
+      {/* {open && (
         <div className="border-t border-border/70 bg-background lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
             {navLinks.map((link) => (
@@ -86,7 +86,7 @@ export function SiteHeader() {
             </div>
           </nav>
         </div>
-      )}
+      )} */}
     </header>
   )
 }

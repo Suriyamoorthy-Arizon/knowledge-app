@@ -5,21 +5,21 @@ const columns = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "/#features" },
+      { label: "Knowledge Base", href: "/#features" },
       { label: "AI Assistant", href: "/#ai" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Changelog", href: "/#" },
-      { label: "Integrations", href: "/#" },
+      // { label: "Pricing", href: "/pricing" },
+      // { label: "Changelog", href: "/#" },
+      // { label: "Integrations", href: "/#" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/#" },
-      { label: "Blog", href: "/#" },
-      { label: "Customers", href: "/#" },
+      // { label: "About", href: "/about" },
+      { label: "Submit Issue", href: "/submit-issue" },
+      // { label: "Careers", href: "/#" },
+      // { label: "Blog", href: "/#" },
+      // { label: "Customers", href: "/#" },
     ],
   },
   {
@@ -27,20 +27,20 @@ const columns = [
     links: [
       { label: "Documentation", href: "/#" },
       { label: "Help center", href: "/#" },
-      { label: "Community", href: "/#" },
+      // { label: "Community", href: "/#" },
       { label: "API reference", href: "/#" },
-      { label: "Status", href: "/#" },
+      // { label: "Status", href: "/#" },
     ],
   },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy", href: "/#" },
-      { label: "Terms", href: "/#" },
-      { label: "Security", href: "/#" },
-      { label: "DPA", href: "/#" },
-    ],
-  },
+  // {
+  //   title: "Legal",
+  //   links: [
+  //     { label: "Privacy", href: "/#" },
+  //     { label: "Terms", href: "/#" },
+  //     { label: "Security", href: "/#" },
+  //     { label: "DPA", href: "/#" },
+  //   ],
+  // },
 ]
 
 export function SiteFooter() {

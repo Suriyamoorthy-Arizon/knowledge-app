@@ -7,74 +7,77 @@ import {
   Users,
   BarChart3,
   Hash,
-} from "lucide-react"
+} from "lucide-react";
 
 const features = [
   {
     icon: BookOpen,
-    title: "Structured knowledge base",
+    title: "BigCommerce Support",
     description:
-      "Organize articles into categories and tags with a rich editor, version history, and approval workflows.",
+      "Maintain a centralized repository of BigCommerce support tickets, development issues, solutions, implementation guides, and technical documentation.",
   },
   {
     icon: Sparkles,
-    title: "AI assistant with citations",
+    title: "Smart Issue Search",
     description:
-      "Ask questions in plain language and get answers grounded in your own docs, with source references.",
-    ai: true,
+      "Quickly locate resolved issues, support responses, troubleshooting steps, and technical solutions using intelligent search capabilities.",
   },
   {
     icon: Search,
-    title: "Universal search",
+    title: "Advanced Search & Filters",
     description:
-      "Instant, typo-tolerant search across articles, discussions, tags, categories, and AI history.",
+      "Search knowledge articles by category, title, keywords, technology stack, or support ticket references for faster issue resolution.",
   },
   {
     icon: MessagesSquare,
-    title: "Real-time chat",
+    title: "Issue Submission Portal",
     description:
-      "Channels, threads, mentions, and reactions keep conversations close to the knowledge they create.",
+      "Submit new issues with detailed descriptions, screenshots, categories, and supporting information for future reference and collaboration.",
   },
   {
     icon: Users,
-    title: "Community discussions",
+    title: "React",
     description:
-      "Crowdsource answers with questions, upvotes, and best-answer badges across your organization.",
+      "Enable developers, support teams, and administrators to share knowledge, best practices, implementation details, and solutions.",
   },
   {
     icon: BarChart3,
-    title: "Analytics dashboards",
+    title: "Java",
     description:
-      "Track engagement, top articles, search trends, and AI usage to see what your team actually needs.",
+      "Track issue trends, frequently reported problems, category distribution, and overall knowledge base growth across projects.",
   },
   {
     icon: Hash,
-    title: "Categories & tags",
+    title: "Next.js",
     description:
-      "Flexible taxonomy keeps growing libraries navigable, so the right content surfaces every time.",
+      "Organize knowledge across BigCommerce, React, Next.js, Java, Backend, DevOps, Integrations, and other technical domains.",
   },
   {
     icon: Shield,
-    title: "Enterprise security",
+    title: "Integrations",
     description:
-      "SSO, SCIM, granular roles, audit logs, and data residency controls built in from day one.",
+      "Manage access securely with role-based permissions, audit tracking, and controlled visibility of technical information.",
   },
-]
+];
 
 export function Features() {
   return (
     <section id="features" className="scroll-mt-20 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto  text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-            Everything in one place
+            Knowledge Management Platform
           </p>
+
           <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-            One platform for how your company learns and shares
+            Centralize Support Solutions and Technical Knowledge
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Replace scattered docs, wikis, and chat threads with a single source of truth your whole
-            team can trust.
+
+          <p className="mx-auto mt-4 max-w-3xl text-pretty text-lg text-muted-foreground">
+            Capture BigCommerce support resolutions, development fixes,
+            environment setup guides, integration challenges, and technical
+            solutions in a single searchable platform that empowers teams to
+            resolve issues faster and share knowledge effectively.
           </p>
         </div>
 
@@ -84,16 +87,12 @@ export function Features() {
               key={feature.title}
               className="group rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-lg hover:shadow-primary/5"
             >
-              <div
-                className={`flex size-11 items-center justify-center rounded-lg ${
-                  feature.ai
-                    ? "bg-ai/10 text-ai"
-                    : "bg-primary/10 text-primary"
-                }`}
-              >
+              <div className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <feature.icon className="size-5" />
               </div>
+
               <h3 className="mt-4 font-semibold">{feature.title}</h3>
+
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {feature.description}
               </p>
@@ -102,5 +101,5 @@ export function Features() {
         </div>
       </div>
     </section>
-  )
+  );
 }

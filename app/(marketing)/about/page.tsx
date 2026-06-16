@@ -112,7 +112,7 @@ export default function AboutPage() {
           </h2>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href="/contact">
+              <Link href="/submit-issue">
                 Get in touch
                 <ArrowRight className="size-4" />
               </Link>
