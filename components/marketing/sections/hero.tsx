@@ -3,6 +3,7 @@ import { ArrowRight, Search, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import SearchArticles from "./SearchArticles";
 
 const categories = [
   "BigCommerce support",
@@ -51,12 +52,12 @@ export function Hero() {
         <div className="mx-auto mt-10 max-w-3xl">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-
-            <Input
+            <SearchArticles />
+            {/* <Input
               type="text"
               placeholder="Search by category, issue title, keyword, support ticket, or technology..."
               className="h-14 rounded-xl pl-12 pr-4 text-base shadow-sm"
-            />
+            /> */}
           </div>
 
           {/* Category Pills */}
