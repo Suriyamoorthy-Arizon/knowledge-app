@@ -30,7 +30,7 @@ export default function SearchArticles() {
         const response = await getArticles({
           search: keyword,
           page: 1,
-          limit: 10,
+          limit: 7,
         });
 
         setArticles(response?.data || []);
@@ -54,7 +54,7 @@ export default function SearchArticles() {
       />
 
       {keyword && (
-        <div className="absolute z-50 mt-2 w-full rounded-xl border bg-background shadow-lg">
+        <div className="absolute z-50 mt-2 w-full rounded-xl border bg-background shadow-lg text-left">
           {loading && <p className="p-4 text-sm">Searching...</p>}
 
           {!loading && articles.length === 0 && (
@@ -65,7 +65,7 @@ export default function SearchArticles() {
             <Link
               key={article.id}
               href={`/article/${article.id}`}
-              className="block border-b p-4 hover:bg-muted"
+              className="block border-b p-3 px-6 hover:bg-muted"
             >
               <div className="font-medium">{article.title}</div>
 

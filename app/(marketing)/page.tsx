@@ -1,18 +1,19 @@
 import { Hero } from "@/components/marketing/sections/hero"
 import { Features } from "@/components/marketing/sections/features"
 
+interface Props {
+  searchParams: Promise<{
+    page?: string;
+  }>;
+}
+export default async function HomePage({ searchParams }: Props) {
+  const params = await searchParams;
+  const page = Number(params.page || 1);
 
-export default function HomePage() {
   return (
     <>
       <Hero />
-      {/* <Logos /> */}
-      <Features />
-      {/* <AiShowcase /> */}
-      {/* <Collaboration /> */}
-      {/* <Testimonials /> */}
-      {/* <PricingPreview /> */}
-      {/* <CtaSection /> */}
+      <Features page={page} />
     </>
-  )
+  );
 }

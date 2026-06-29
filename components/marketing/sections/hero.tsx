@@ -17,7 +17,7 @@ const categories = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[480px] bg-gradient-to-b from-accent/40 to-transparent"
         aria-hidden="true"

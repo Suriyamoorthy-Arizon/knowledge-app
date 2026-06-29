@@ -2,9 +2,16 @@ import Link from "next/link";
 import { CalendarDays } from "lucide-react";
 import { getArticles } from "@/components/services/services";
 
-export async function Features() {
-  const response = await getArticles();
+interface FeaturesProps {
+  page: number;
+}
+export async function Features({ page }: FeaturesProps) {
+  const response = await getArticles({
+    page,
+    limit: 9,
+  });
   const articles = response?.data?.length > 0 ? response?.data : [];
+  const pagination = response.pagination;
 
   return (
     <section id="features" className="py-20">
@@ -49,6 +56,42 @@ export async function Features() {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="mt-10 flex items-center justify-center gap-2">
+          {pagination.hasPreviousPage && (
+            <Link
+              scroll={false}
+              href={`/?page=${page - 1}`}
+              className="rounded-md border px-4 py-2 hover:bg-muted"
+            >
+              Previous
+            </Link>
+          )}
+
+          {Array.from({ length: pagination.totalPages }, (_, index) => (
+            <Link
+              scroll={false}
+              key={index}
+              href={`/?page=${index + 1}`}
+              className={`rounded-md border px-4 py-2 ${
+                page === index + 1
+                  ? "bg-primary text-primary-foreground"
+                  : "hover:bg-muted"
+              }`}
+            >
+              {index + 1}
+            </Link>
+          ))}
+
+          {pagination?.hasNextPage && (
+            <Link
+              scroll={false}
+              href={`/?page=${page + 1}`}
+              className="rounded-md border px-4 py-2 hover:bg-muted"
+            >
+              Next
+            </Link>
+          )}
         </div>
       </div>
     </section>
