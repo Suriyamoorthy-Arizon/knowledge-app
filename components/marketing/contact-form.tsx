@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import TiptapEditor from "@/components/TiptapEditor";
+import { createArticle } from "../services/services";
 
 const categories = [
   "BigCommerce",
@@ -23,6 +24,37 @@ export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+
+      await createArticle({
+        title: String(formData.get("title")),
+        category,
+        description: content,
+        author_first_name: String(formData.get("firstName")),
+        author_last_name: String(formData.get("lastName")),
+        author_email: String(formData.get("email")),
+      });
+
+      setSubmitted(true);
+      setContent("");
+      setCategory("");
+
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Create Article Error:", error);
+      alert("Failed to publish article.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (submitted) {
     return (
@@ -55,25 +87,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      className="flex flex-col gap-5"
-      onSubmit={(e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.currentTarget);
-
-        console.log({
-          firstName: formData.get("firstName"),
-          lastName: formData.get("lastName"),
-          title: formData.get("title"),
-          category,
-          authorEmail: formData.get("email"),
-          content,
-        });
-
-        setSubmitted(true);
-      }}
-    >
+    <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
       <div>
         <h1 className="text-2xl font-bold">Submit Issue</h1>
         <p className="text-sm text-muted-foreground">
@@ -84,22 +98,12 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Label htmlFor="firstName">First Name</Label>
-          <Input
-            id="firstName"
-            name="firstName"
-            placeholder="John"
-            required
-          />
+          <Input id="firstName" name="firstName" placeholder="John" required />
         </div>
 
         <div className="flex flex-col gap-2">
           <Label htmlFor="lastName">Last Name</Label>
-          <Input
-            id="lastName"
-            name="lastName"
-            placeholder="Doe"
-            required
-          />
+          <Input id="lastName" name="lastName" placeholder="Doe" required />
         </div>
       </div>
 
@@ -126,10 +130,7 @@ export function ContactForm() {
           <option value="">Select Category</option>
 
           {categories.map((item) => (
-            <option
-              key={item}
-              value={item}
-            >
+            <option key={item} value={item}>
               {item}
             </option>
           ))}
@@ -151,17 +152,10 @@ export function ContactForm() {
       <div className="flex flex-col gap-2">
         <Label>Article Content</Label>
 
-        <TiptapEditor
-          content={content}
-          onChange={setContent}
-        />
+        <TiptapEditor content={content} onChange={setContent} />
       </div>
 
-      <Button
-        type="submit"
-        size="lg"
-        className="w-full"
-      >
+      <Button type="submit" size="lg" className="w-full">
         Publish Issue
       </Button>
 

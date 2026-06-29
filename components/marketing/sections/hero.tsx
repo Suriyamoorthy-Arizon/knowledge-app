@@ -22,8 +22,8 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="mx-auto max-w-7xl px-4 pb-12 pt-20 text-center sm:px-6 lg:px-8 lg:pt-28">
-        <Link
+      <div className="mx-auto max-w-7xl px-4 pb-12 pt-20 text-center sm:px-6 lg:px-8">
+        {/* <Link
           href="#"
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-sm font-medium text-muted-foreground shadow-sm transition-colors hover:text-foreground"
         >
@@ -33,9 +33,9 @@ export function Hero() {
           </span>
           Knowledge Base & Support Solutions
           <ArrowRight className="size-3.5" />
-        </Link>
+        </Link> */}
 
-        <h1 className="mx-auto mt-8  text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-5xl">
+        <h1 className="mx-auto text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-5xl">
           Find Solutions Faster with Knowledge Desk
         </h1>
 
@@ -76,10 +76,10 @@ export function Hero() {
 
         {/* Optional Action Buttons */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button size="lg">
+          {/* <Button size="lg">
             Browse Knowledge Base
             <ArrowRight className="size-4" />
-          </Button>
+          </Button> */}
 
           <Button variant="outline" size="lg">
             <Link href="/submit-issue">Submit New Issue</Link>

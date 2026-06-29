@@ -11,11 +11,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Logos />
+      {/* <Logos /> */}
       <Features />
       {/* <AiShowcase /> */}
       {/* <Collaboration /> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <PricingPreview /> */}
       {/* <CtaSection /> */}
     </>
