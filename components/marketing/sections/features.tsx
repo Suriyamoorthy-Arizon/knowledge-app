@@ -20,7 +20,7 @@ export async function Features({ page }: FeaturesProps) {
           <h2 className="text-3xl font-bold">Latest Posts</h2>
 
           <p className="mt-3 text-muted-foreground">
-            Browse recently published technical articles.
+            Browse recently published technical posts.
           </p>
         </div>
 

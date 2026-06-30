@@ -47,7 +47,6 @@ export function ContactForm() {
       setContent("");
       setCategory("");
 
-      e.currentTarget.reset();
     } catch (error) {
       console.error("Create Article Error:", error);
       alert("Failed to publish article.");
