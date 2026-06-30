@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
 import { getArticles } from "@/components/services/services";
 
@@ -15,11 +16,13 @@ interface Article {
 export default function SearchArticles() {
   const [keyword, setKeyword] = useState("");
   const [articles, setArticles] = useState<Article[]>([]);
+  const [geminiAnswer, setGeminiAnswer] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (keyword.trim().length < 2) {
       setArticles([]);
+      setGeminiAnswer("");
       return;
     }
 
@@ -33,7 +36,21 @@ export default function SearchArticles() {
           limit: 7,
         });
 
-        setArticles(response?.data || []);
+        if (response?.source === "database") {
+          setArticles(response?.data || []);
+          setGeminiAnswer("");
+        } else if (response?.source === "gemini") {
+          setArticles([]);
+          setGeminiAnswer(response?.answer || "");
+        } else {
+          // Backward compatibility
+          setArticles(response.data || []);
+          setGeminiAnswer("");
+        }
+      } catch (error) {
+        console.error("Search Error:", error);
+        setArticles([]);
+        setGeminiAnswer("");
       } finally {
         setLoading(false);
       }
@@ -53,27 +70,63 @@ export default function SearchArticles() {
         className="h-14 rounded-xl pl-12"
       />
 
-      {keyword && (
-        <div className="absolute z-50 mt-2 w-full rounded-xl border bg-background shadow-lg text-left">
-          {loading && <p className="p-4 text-sm">Searching...</p>}
+      {keyword.trim().length >= 2 && (
+        <div className="absolute z-50 mt-2 max-h-[450px] w-full overflow-y-auto rounded-xl border bg-background text-left shadow-lg">
 
-          {!loading && articles.length === 0 && (
-            <p className="p-4 text-sm">No articles found</p>
+          {loading && (
+            <div className="p-4 text-sm text-muted-foreground">
+              Searching...
+            </div>
           )}
 
-          {articles?.map((article) => (
-            <Link
-              key={article.id}
-              href={`/article/${article.id}`}
-              className="block border-b p-3 px-6 hover:bg-muted"
-            >
-              <div className="font-medium">{article.title}</div>
-
-              <div className="text-xs text-muted-foreground">
-                {article.category}
+          {!loading &&
+            articles.length === 0 &&
+            !geminiAnswer && (
+              <div className="p-4 text-sm text-muted-foreground">
+                No articles found.
               </div>
-            </Link>
-          ))}
+            )}
+
+          {!loading &&
+            articles.map((article) => (
+              <Link
+                key={article.id}
+                href={`/article/${article.id}`}
+                className="block border-b p-4 transition-colors hover:bg-muted"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">
+                      {article.title}
+                    </h4>
+
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {article.category}
+                    </p>
+                  </div>
+
+                  <span className="rounded-full bg-primary/10 px-2 py-1 text-xs text-primary">
+                    {article.category}
+                  </span>
+                </div>
+              </Link>
+            ))}
+
+          {!loading && geminiAnswer && (
+            <div className="p-5">
+              <div className="mb-3 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+
+                <h4 className="font-semibold text-primary">
+                  AI Answer
+                </h4>
+              </div>
+
+              <div className="rounded-lg border bg-muted/40 p-4 text-sm leading-7 text-muted-foreground whitespace-pre-wrap">
+                {geminiAnswer}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
